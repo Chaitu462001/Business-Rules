@@ -1,0 +1,9 @@
+(function executeRule(current, previous /*null when async*/) {
+	
+var caller = current.getValue('caller_id');
+
+	current.setValue('u_email',current.caller.email);
+	current.setValue('location',current.caller.location);
+	current.setValue('u_department',current.caller.department);
+	
+})(current, previous);
