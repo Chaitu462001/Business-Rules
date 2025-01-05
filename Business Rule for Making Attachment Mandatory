@@ -1,0 +1,13 @@
+(function executeRule(current, previous /*null when async*/) {
+
+    var ms = new GlideRecord('sys_attachment');
+    ms.addQuery('table_name', current.getTableName());
+    ms.addQuery('table_sys_id', current.sys_id);
+    ms.query();
+
+    if (!ms.hasNext()) {
+        gs.addErrorMessage('Attachment is mandatory');
+        current.setAbortAction(true);
+    }
+
+})(current, previous);
