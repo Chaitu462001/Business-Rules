@@ -1,0 +1,12 @@
+(function executeRule(current, previous /*null when async*/) {
+
+var ms = new GlideRecord('incident');
+ms.addQuery('caller_id',current.caller_id);
+ms.query();
+if(ms.next()){
+	ms.setValue('resolved_by', new GlideDateTime());
+	ms.setValue('resolved_at', ms.getUserID());
+	ms.update();
+}
+
+})(current, previous);
