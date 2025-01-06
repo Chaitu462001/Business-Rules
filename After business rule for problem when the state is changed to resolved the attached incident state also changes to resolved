@@ -1,0 +1,13 @@
+(function executeRule(current, previous /*null when async*/) {
+
+var ms = new GlideRecord('incident');
+ms.addQuery('problem_id',current.sys_id);
+ms.query();
+while(ms.next()){
+	ms.setValue('state', <stage of that state>);
+	ms.setValue('close_code','solution provided');
+	ms.setValue('close_notes','Closed By Problem');
+	ms.update();
+}
+
+})(current, previous);
