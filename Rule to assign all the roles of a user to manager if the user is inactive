@@ -1,0 +1,8 @@
+var ms = new GlideRecord('incident');
+ms.addQuery('assigned_to',current.sys_id);
+ms.query();
+while(ms.next()){
+	ms.setValue('assigned_to',current.u_manager);
+	ms.update();
+	
+}
