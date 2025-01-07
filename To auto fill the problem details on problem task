@@ -1,0 +1,5 @@
+current.category = current.problem.category;
+current.subcategory = current.problem.subcategory;
+current.short_description = current.problem.short_description;
+current.description = current.problem.description
+current.impact = current.problem.impact;
