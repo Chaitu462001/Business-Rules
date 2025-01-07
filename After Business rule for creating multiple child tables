@@ -1,0 +1,22 @@
+(function executeRule(current, previous /*null when async*/ ) {
+    for (var i = 0; i < 2; i++) {
+        var ms = new GlideRecord('u_surya_chaitanya');
+        ms.initialize();
+        ms.u_caller_id = current.caller_id;
+        ms.u_location = current.location;
+        ms.u_state = current.state;
+        ms.u_short_description = current.short_description;
+        ms.u_parent_incident = current.number;
+        var inserted = ms.insert();
+
+        gs.log('Business Rule executed. Record inserted with sys_id: ' + inserted);
+
+        if (!inserted) {
+            gs.addInfoMessage('Failed to insert record into u_surya_chaitanya table');
+        } else {
+            gs.addErrorMessage('Record successfully inserted into u_surya_chaitanya table with sys_id: ' + ms.sys_id);
+        }
+    }
+
+
+})(current, previous);
