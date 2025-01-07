@@ -1,0 +1,34 @@
+CLIENT SCRIPT : (Using Scratchpad)
+ if (g_scratchpad.isMemeber = 'yes') {
+        g_form.setDisplay('u_email', true);
+        g_form.setDisplay('location', true);
+        g_form.setDisplay('u_department', true);
+    } else {
+        g_form.setDisplay('u_email', false);
+        g_form.setDisplay('location', false);
+        g_form.setDisplay('u_department', false);
+    }
+}
+CLIENT SCRIPT : (without using scratchpad)
+var ms = new GlideRecord('sys_user_grmember');
+    ms.addQuery('user', '46d44a23a9fe19810012d100cca80666');
+    ms.add('group', 'Database');
+    ms.query();
+ if (ms.next()) {
+        g_form.setDisplay('u_email', true);
+        g_form.setDisplay('location', true);
+        g_form.setDisplay('u_department', true);
+    } else {
+        g_form.setDisplay('u_email', false);
+        g_form.setDisplay('location', false);
+        g_form.setDisplay('u_department', false);
+    }
+}
+
+Business Rule : 
+if(gs.getUser().isMemeberOf('group name')){
+g_scratchpad.isMemeber = 'yes';
+} else {
+g_scratchpad.isMemeber = 'no';
+}
+
